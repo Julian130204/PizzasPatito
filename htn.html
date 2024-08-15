@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .image-half {
+            width: 50%;
+            background-image: url('https://i.pinimg.com/originals/98/2d/78/982d78c54b0b581c36309d76e509e751.gif');
+            background-size: cover;
+            background-position: center;
+        }
+        .login-form {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+            position: relative;
+        }
+        .login-form form {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+        }
+        .login-form input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+        }
+        .login-form button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: orange;
+            border: none;
+            color: white;
+        }
+        .small-image {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-image: url('ruta_de_la_imagen_del_boton');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid orange;
+        }
+        .small-image:hover {
+            background-color: orange;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-half, .login-form {
+                width: 100%;
+                height: 50%;
+            }
+            .small-image {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            .login-form form {
+                width: 90%;
+            }
+        }
+        @media (max-width: 480px) {
+            .login-form input, .login-form button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .small-image {
+                top: 5px;
+                right: 5px;
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-half"></div>
+        <div class="login-form">
+            <a href="cli.html" class="small-image" title="Regresar al inicio"></a>
+            <form onsubmit="handleLogin(event)">
+                <input type="text" id="usuario" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const usuario = document.getElementById('usuario').value;
+            const password = document.getElementById('password').value;
+
+            if (usuario === 'Andres' && password === 'Andres2024!') {
+                window.location.href = 'cli.html';
+            } else if (usuario === 'Marcelo' && password === 'Marcelo2024!') {
+                window.location.href = 'EMP.html';
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        }
+    </script>
+</body>
+</html>

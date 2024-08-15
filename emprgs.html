@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Añadido para el botón de regreso */
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .image-half {
+            width: 50%;
+            background-image: url('https://www.lavanguardia.com/files/image_948_465/files/fp/uploads/2021/03/30/6063031b90a87.r_d.1083-871-4663.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .register-form {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+            position: relative;
+        }
+        .register-form form {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+        }
+        .register-form input, .register-form select {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+        }
+        .register-form button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: orange;
+            border: none;
+            color: white;
+        }
+        .small-image {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-image: url('archivo_local.png'); /* Ruta del archivo local */
+            background-size: cover;
+            background-position: center;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: orange;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .back-button svg {
+            fill: white;
+            width: 24px;
+            height: 24px;
+        }
+        .register-success {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: orange;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-half, .register-form {
+                width: 100%;
+                height: 50%;
+            }
+            .small-image {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            .register-form form {
+                width: 90%;
+            }
+            .back-button {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        @media (max-width: 480px) {
+            .register-form input, .register-form select, .register-form button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .small-image {
+                top: 5px;
+                right: 5px;
+                width: 30px;
+                height: 30px;
+            }
+            .back-button {
+                top: 5px;
+                right: 5px;
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-half"></div>
+        <div class="register-form">
+            <div class="small-image"></div>
+            <button class="back-button" onclick="goBack()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h-1.56l2.92-3.03-1.41-1.41-4.5 4.5 4.5 4.5 1.41-1.41-2.92-3.03H13v3z"/>
+                </svg>
+            </button>
+            <form onsubmit="handleRegistration(event)">
+                <input type="text" placeholder="Nombre" required>
+                <input type="text" placeholder="Apellido Paterno" required>
+                <input type="text" placeholder="Apellido Materno" required>
+                <input type="text" placeholder="Dirección" required>
+                <input type="email" placeholder="Correo" required>
+                <input type="tel" placeholder="Lada / Teléfono" required>
+                <input type="password" placeholder="Contraseña" required>
+                <select name="rol" id="rol" required>
+                    <option value="">Selecciona un rol</option>
+                    <option value="1">Opción 1</option>
+                    <option value="3">Opción 3</option>
+                    <option value="4">Opción 4</option>
+                    <option value="5">Opción 5</option>
+                    <option value="6">Opción 6</option>
+                    <option value="7">Opción 7</option>
+                </select>
+                <button type="submit">Registrar</button>
+            </form>
+            <div class="register-success">
+                <p>¡Registro exitoso! Por favor, <a href="htn.html">inicia sesión aquí</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleRegistration(event) {
+            // Simular registro exitoso (aquí puedes agregar lógica real de registro)
+            event.preventDefault(); // Evitar que el formulario se envíe realmente
+            // Mostrar mensaje de registro exitoso
+            document.querySelector('.register-success').style.display = 'block';
+            // Puedes redirigir al usuario a la página de inicio de sesión usando JavaScript:
+            // window.location.href = 'login.html'; // Descomenta esta línea para redirigir automáticamente
+        }
+
+        function goBack() {
+            window.location.href = 'EMP.html'; // Reemplaza 'index.html' con el nombre de tu HTML principal
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="estilo.css">
+    <script src="app.js" async></script>
+    <link rel="precios.php">
+    <title>Pizza Patito | </title>
+    <style>
+        .metodo-pago, .metodo-pago-efectivo {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pizza Patito</h1>
+    </header>
+    <section class="contenedor">
+        <!-- Contenedor de elementos -->
+        <div class="contenedor-items">
+            <div class="item">
+                <span class="titulo-item">pizza peperoni</span>
+                <img src="img/Pepperoni.png" alt="" class="img-item">
+                <span class="precio-item">$14,99</span>
+                <button class="boton-item">Agregar al pedido</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">pizza hawaiana</span>
+                <img src="img/pizzahawaia.png" alt="" class="img-item">
+                <span class="precio-item">$16,99</span>
+                <button class="boton-item">Agregar al pedido</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">pizza de pastor</span>
+                <img src="img/Pastor.png" alt="" class="img-item">
+                <span class="precio-item">$16,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">pizza arabe</span>
+                <img src="img/pizza arabe.png" alt="" class="img-item">
+                <span class="precio-item">$18,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">pizza mexicana</span>
+                <img src="img/PizzaMexicana-minif-3e3bcbf7.png" alt="" class="img-item">
+                <span class="precio-item">$14,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">pizza kebap</span>
+                <img src="img/pizza kebap.png" alt="" class="img-item">
+                <span class="precio-item">$18,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">pizza vegetariana</span>
+                <img src="img/vegetariana.png" alt="" class="img-item">
+                <span class="precio-item">$18,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">pizza 4 quesos</span>
+                <img src="img/cuatro quesos.png" alt="" class="img-item">
+                <span class="precio-item">$18,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">coca cola</span>
+                <img src="img/Coca.webp" alt="" class="img-item">
+                <span class="precio-item">$40,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">fanta naranja </span>
+                <img src="img/fanta naranja.webp" alt="" class="img-item">
+                <span class="precio-item">$40,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">delaware</span>
+                <img src="img/delaware punch.png" alt="" class="img-item">
+                <span class="precio-item">$40,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">chiva cola</span>
+                <img src="img/chiva cola.png" alt="" class="img-item">
+                <span class="precio-item">$40,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">manzanita sol</span>
+                <img src="img/manzanita sol.webp" alt="" class="img-item">
+                <span class="precio-item">$40,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+            <div class="item">
+                <span class="titulo-item">sprite</span>
+                <img src="img/372466_p.webp" alt="" class="img-item">
+                <span class="precio-item">$40,99</span>
+                <button class="boton-item">Agregar al Carrito</button>
+            </div>
+        </div>
+        <!-- Carrito de Compras -->
+        <div class="carrito" id="carrito">
+            <div class="header-carrito">
+                <h2>Pedido</h2>
+            </div>
+
+            <div class="carrito-items">
+                
+            </div>
+            <div class="carrito-total">
+                <div class="fila">
+                    <strong>Total</strong>
+                    <span class="carrito-precio-total">
+                        $120.000,00
+                    </span>
+                </div>
+                <button class="btn-pagar">Ordenar <i class="fa-solid fa-bag-shopping"></i> </button>
+            </div>
+
+            <div class="opciones-pago">
+                <button onclick="mostrarMetodoPago('tarjeta')">Pagar con Tarjeta</button>
+                <button onclick="mostrarMetodoPago('efectivo')">Pagar en Efectivo</button>
+            </div>
+
+            <!-- Método de pago por tarjeta -->
+            <div class="metodo-pago" id="pago-tarjeta">
+                <h2>Método de Pago</h2>
+                <form id="formulario-pago" action="procesar_pago.php" method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre en la tarjeta</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número de la tarjeta</label>
+                        <input type="text" id="numero" name="numero" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-expiracion">Fecha de expiración</label>
+                        <input type="text" id="fecha-expiracion" name="fecha-expiracion" placeholder="MM/AA" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" required>
+                    </div>
+                    <button type="submit" class="btn-pagar">Pagar</button>
+                </form>
+            </div>
+
+            <!-- Método de pago en efectivo -->
+            <div class="metodo-pago-efectivo" id="pago-efectivo">
+                <h2>Pagar en Efectivo</h2>
+                <form id="formulario-efectivo" onsubmit="calcularCambio(event)">
+                    <div class="form-group">
+                        <label for="total-pagar">Total a Pagar</label>
+                        <span id="total-pagar" class="total-pagar">$120.000,00</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="total-recibido">Total Recibido</label>
+                        <input type="text" id="total-recibido" name="total-recibido" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cambio">Cambio</label>
+                        <span id="cambio" class="cambio">$0,00</span>
+                    </div>
+                    <button type="submit" class="btn-pagar">Calcular Cambio</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function mostrarMetodoPago(metodo) {
+            document.getElementById('pago-tarjeta').style.display = 'none';
+            document.getElementById('pago-efectivo').style.display = 'none';
+
+            if (metodo === 'tarjeta') {
+                document.getElementById('pago-tarjeta').style.display = 'block';
+            } else if (metodo === 'efectivo') {
+                document.getElementById('pago-efectivo').style.display = 'block';
+            }
+        }
+
+        function calcularCambio(event) {
+            event.preventDefault();
+            const totalPagar = parseFloat(document.querySelector('#total-pagar').innerText.replace('$', '').replace(',', ''));
+            const totalRecibido = parseFloat(document.querySelector('#total-recibido').value);
+            const cambio = totalRecibido - totalPagar;
+            document.querySelector('#cambio').innerText = '$' + cambio.toFixed(2);
+        }
+    </script>
+</body>
+</html>

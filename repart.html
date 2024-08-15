@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzas Patito - Pedido de Pizza</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: black;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: orange;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .menu-icon img {
+            width: 24px;
+            height: 24px;
+        }
+        .user-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .user-menu img {
+            cursor: pointer;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown a img {
+            margin-right: 8px;
+        }
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+        .user-menu:hover .dropdown {
+            display: block;
+        }
+        .rectangulo-superior {
+            width: 80%;
+            height: 100px;
+            margin: 20px 0;
+            background-color: #333333;
+            border: 1px solid #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            flex-direction: column;
+        }
+        .rectangulo-superior .rectangulo-horizontal-blanco {
+            width: 100%;
+            height: 30px; 
+            background-color: #ffffff;
+            position: absolute;
+            top: 0;
+            border-radius: 8px 8px 0 0;
+        }
+        .contenedor-horizontal {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+        .rectangulo-vertical {
+            width: 30%;
+            height: 550px;
+            margin: 5px;
+            background-color: #fc7a00;
+            border: 1px solid #ffbb00;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .rectangulo-vertical:hover {
+            transform: translateY(-10px);
+        }
+        .rectangulo-vertical img {
+            max-width: 100%;
+            max-height: 100%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .rectangulo-vertical div {
+            margin: 10px 0;
+        }
+        .rectangulo-vertical button {
+            margin-top: auto;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .rectangulo-vertical button:hover {
+            background-color: #dddddd;
+        }
+        .rectangulo-horizontal {
+            height: 150px;
+            width: 80%;
+            margin: 20px 0;
+            background-color: #fc7a00;
+            border: 1px solid #ffbb00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        #pedido-info {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #05d1c7;
+            padding: 20px;
+            width: 80%;
+            background-color: #0bb1c7;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #pedido-info button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        #pedido-info button:hover {
+            background-color: #dddddd;
+        }
+        #contenedor-entregados {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pizzas Patito</h1>
+        <a href="EMP.html" class="menu-icon">
+            <img src="ruta_del_icono_menu.png" alt="Menú">
+        </a>
+        <div class="user-menu">
+            <img src="C:\Users\ver30\OneDrive\Documentos\OTROS\COSAS UNI\VANESA\FRAMES\iconnn.png" alt="User Menu" width="24" height="24">
+            <div class="dropdown">
+                <a href="rgs.html"><img src="ruta_del_icono_registro.png" alt="Registro" width="24" height="24">Registrarse</a>
+                <a href="htn.html"><img src="ruta_del_icono_login.png" alt="Iniciar Sesión" width="24" height="24">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="rectangulo-superior">
+        <div class="rectangulo-horizontal-blanco"></div>
+        <div>Nombre del Repartidor: <span id="Repartidor">Steven</span></div>
+        <div>Número de la Moto: <span id="Numero">moto 4</span></div>
+    </div>
+
+    <div class="contenedor-horizontal">
+        <div class="rectangulo-vertical" id="pedido1">
+            <img src="pepperoni.png" alt="Imagen de Pizza">
+            <div>Pedido de la Pizza: grande peperoni</div>
+            <div>Dirección de Entrega: Calle voris #375</div>
+            <button onclick="mostrarInfoPedido('Pizza peperoni', 'Calle voris #375', '123456789', 'Oscar', 'pedido1')">Aceptar</button>
+        </div>
+        <div class="rectangulo-vertical" id="pedido2">
+            <img src="tresquesos.png" alt="Imagen de Pizza">
+            <div>Pedido de la Pizza: chica 3 quesos</div>
+            <div>Dirección de Entrega: Calle del dog #148</div>
+            <button onclick="mostrarInfoPedido('Pizza 3 quesos', 'Calle del dog #148', '987654321', 'Edward', 'pedido2')">Aceptar</button>
+        </div>
+        <div class="rectangulo-vertical" id="pedido3">
+            <img src="chistorra.png" alt="Imagen de Pizza">
+            <div>Pedido de la Pizza: mediana chistorra</div>
+            <div>Dirección de Entrega: Calle amiko #125</div>
+            <button onclick="mostrarInfoPedido('Pizza chistorra', 'Calle amiko #125', '456789123', 'Jose', 'pedido3')">Aceptar</button>
+        </div>
+    </div>
+
+    <div id="pedido-info">
+        <h2>Información del Pedido</h2>
+        <p><strong>Menú:</strong> <span id="menu-pizza"></span></p>
+        <p><strong>Ubicación del Pedido:</strong> <span id="ubicacion-pedido"></span></p>
+        <p><strong>Número del Consumidor:</strong> <span id="numero-consumidor"></span></p>
+        <p><strong>Nombre del Consumidor:</strong> <span id="nombre-consumidor"></span></p>
+        <button onclick="marcarComoEntregado()">Entregado</button>
+    </div>
+
+    <div id="contenedor-entregados">
+        <h2>Pedidos Entregados</h2>
+        <div class="contenedor-horizontal" id="pedidos-entregados">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Pizzas Patito. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let pedidoActualId;
+
+        function mostrarInfoPedido(menu, ubicacion, numero, nombre, pedidoId) {
+            document.getElementById('menu-pizza').textContent = menu;
+            document.getElementById('ubicacion-pedido').textContent = ubicacion;
+            document.getElementById('numero-consumidor').textContent = numero;
+            document.getElementById('nombre-consumidor').textContent = nombre;
+            document.getElementById('pedido-info').style.display = 'block';
+            pedidoActualId = pedidoId;
+
+            document.querySelector(`#${pedidoId} button`).disabled = true;
+        }
+
+        function marcarComoEntregado() {
+            const pedidoElement = document.getElementById(pedidoActualId);
+
+            const repartidorInfo = document.createElement('div');
+            repartidorInfo.innerHTML = `
+                <p>Entregado por: <span>${document.getElementById('Repartidor').textContent}</span></p>
+                <p>Número de la Moto: <span>${document.getElementById('Numero').textContent}</span></p>
+            `;
+            pedidoElement.appendChild(repartidorInfo);
+
+            pedidoElement.style.display = 'none';
+
+            const contenedorEntregados = document.getElementById('pedidos-entregados');
+            contenedorEntregados.appendChild(pedidoElement);
+            pedidoElement.style.display = 'flex';
+
+            document.getElementById('pedido-info').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
